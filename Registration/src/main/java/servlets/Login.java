@@ -4,9 +4,7 @@ import database.Queries;
 import user.User;
 
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -19,11 +17,14 @@ public class Login extends HttpServlet {
         try {
             Queries servletQuery = new Queries();
             if(servletQuery.checkUser(currentUser)) {
-                response.sendRedirect("wrongdata.jsp");
+                HttpSession session = request.getSession();
+                session.setAttribute("user", currentUser.getName());
+                session.setAttribute("mode", servletQuery.getMode(currentUser));
+                response.sendRedirect("/profile");
             }
             else {
-                response.sendRedirect("wrongdata.jsp");
-            }
+               response.sendRedirect("wrongdata.jsp");
+                            }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

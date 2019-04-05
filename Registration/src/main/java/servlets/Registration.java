@@ -25,7 +25,7 @@ public class Registration extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.getWriter().println("Dziękujemy za rejestrację uzytkownika:" + currentUser.getName());
+        response.getWriter().println("Thank for register:" + currentUser.getName());
 
     }
 

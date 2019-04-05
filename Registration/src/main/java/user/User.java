@@ -2,6 +2,8 @@ package user;
 
 import javax.servlet.http.HttpServletRequest;
 
+import static java.lang.Integer.parseInt;
+
 public class User {
 
     private String Name;
@@ -48,6 +50,14 @@ public class User {
 
         this.setName(request.getParameter("name"));
         this.setPassword(request.getParameter("password"));
+
+        return this;
+    }
+
+    public User updateUserData(HttpServletRequest request) {
+
+        this.setName(request.getParameter("name"));
+        this.setUserMode(parseInt(request.getParameter("mode")));
 
         return this;
     }

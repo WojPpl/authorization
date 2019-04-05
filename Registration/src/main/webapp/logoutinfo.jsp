@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    session.invalidate();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +17,7 @@
 <div class="uk-vertical-align uk-text-center uk-height-1-1">
     <div class="uk-vertical-align-middle" style="width: 800px;">
 
-        <div class="uk-alert uk-alert-danger">Wrong username or password</div>
+        <div class="uk-alert uk-alert-info">User was logged out</div>
         <div class="uk-row">
             <div class="uk-width-1-2 uk-margin-top uk-float-left"><a href="/login">Click here to login</a></div>
             <div class="uk-width-1-2 uk-margin-top uk-float-left"><a href="/">Click here to register</a></div>

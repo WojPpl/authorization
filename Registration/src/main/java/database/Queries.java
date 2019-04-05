@@ -21,7 +21,7 @@ public class Queries {
         Statement stmt = this.connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * from users");
         while (rs.next())
-            queryResults = rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3);
+            queryResults = rs.getString(2);
         return queryResults;
     }
 
@@ -31,17 +31,35 @@ public class Queries {
         return null;
     }
 
+    public Void updateUser(User requestUser) throws SQLException {
+        Statement stmt = this.connection.createStatement();
+        stmt.executeUpdate("UPDATE `users` SET `role` = '"+requestUser.getUserMode()+"' WHERE `users`.`name` = '"+requestUser.getName()+"'");
+        return null;
+    }
+
     public Boolean checkUser(User requestUser) throws SQLException {
         Statement stmt = this.connection.createStatement();
         Boolean checker = false;
 
-        ResultSet rs = stmt.executeQuery("select * from users");
+        ResultSet rs = stmt.executeQuery("select * from users where name='"+requestUser.getName()+"' and password='"+requestUser.getPassword()+"'");
         while (rs.next()) {
-            if (rs.getString(2) == requestUser.getName() && rs.getString(3) == requestUser.getPassword()) {
+            if(requestUser.getName().equals(rs.getString(2))) {
                 checker = true;
-                break;
+                return checker;
             }
         }
         return checker;
     }
-}
+
+    public String getMode(User requestUser) throws SQLException {
+        Statement stmt = this.connection.createStatement();
+        String mode = "";
+        ResultSet rs = stmt.executeQuery("select * from users where name='"+requestUser.getName()+"' and password='"+requestUser.getPassword()+"'");
+        while (rs.next()) {
+            if(requestUser.getName().equals(rs.getString(2))) {
+                mode = rs.getString(4);
+            }
+        }
+        return mode;
+    }
+    }

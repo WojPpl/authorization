@@ -21,20 +21,20 @@
     <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>profile</servlet-name>
-    <servlet-class>servlets.Profile</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>profile</servlet-name>
-    <url-pattern>/profile</url-pattern>
-  </servlet-mapping>
-  <servlet>
     <servlet-name>manage</servlet-name>
     <servlet-class>servlets.Manage</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>manage</servlet-name>
     <url-pattern>/manage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>profile</servlet-name>
+    <servlet-class>servlets.Profile</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>profile</servlet-name>
+    <url-pattern>/profile</url-pattern>
   </servlet-mapping>
 </web-app>
 
